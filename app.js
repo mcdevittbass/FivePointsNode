@@ -1,3 +1,5 @@
+//To run Mongo server: mongod --dbpath=data --bind_ip 127.0.0.1 from mongodb folder
+
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -39,7 +41,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/menuItems', menuRouter);
-
 
 
 // catch 404 and forward to error handler
