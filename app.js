@@ -1,5 +1,7 @@
 //To run Mongo server: mongod --dbpath=data --bind_ip 127.0.0.1 from mongodb folder
 
+require('dotenv').config();
+
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
