@@ -1,4 +1,4 @@
-//To run Mongo server: mongod --dbpath=data --bind_ip 127.0.0.1 from mongodb folder
+//To run Mongo server: mongod --dbpath=data --bind_ip 127.0.0.1 from mongodb directory
 
 require('dotenv').config();
 

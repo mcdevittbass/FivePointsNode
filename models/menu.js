@@ -11,8 +11,7 @@ const menuSchema = new Schema({
         unique: true
     },
     img: {
-        type: String,
-        required: false
+        type: String
     },
     price: {
         type: Currency,

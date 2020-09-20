@@ -18,4 +18,7 @@ menuRouter.route('/:menuId')
 .put(menuController.menu1_put)
 .delete(menuController.menu1_delete);
 
+menuRouter.route('/categories/:category')
+.get(menuController.menuCategory);
+
 module.exports = menuRouter;

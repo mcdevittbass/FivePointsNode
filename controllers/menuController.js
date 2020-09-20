@@ -7,25 +7,25 @@ exports.menu_get = async (req, res, next) => {
     res.json(menuItems); 
 };
 
-//requester can add a menu item
+//requester can add a menu item or array of menu items
 exports.menu_post = async (req, res, next) => {
     const menuItems = await Menu.create(req.body).catch(err => next(err));
     console.log('Menu Items Created ', menuItems);
     res.json(menuItems);
-    //let names = req.body.map(obj => obj.name).join(', ');
-    //res.send(`You are POSTING this list of menu items: ${names}`);
 };
 
 //multiple menu items cannot currently be changed at once
 exports.menu_put = (req, res, next) => {
     res.send('PUT operation not supported');
 };
-
+``
 //requester can delete all menu items
 exports.menu_delete = async (req, res, next) => {
     const menuItems = await Menu.remove().catch(err => next(err));
     res.json(menuItems); 
 };
+
+
 
 //requester can view a single menu item by its ID
 exports.menu1_get = async (req, res, next) => {
@@ -37,7 +37,7 @@ exports.menu1_get = async (req, res, next) => {
     }
 };
 
-//use '/' above to post a new item
+//use method for '/' above to post a new item
 exports.menu1_post = (req, res, next) => {
     res.send(`You cannot POST an item by its Id`);
 };
@@ -62,3 +62,15 @@ exports.menu1_delete = async (req, res, next) => {
         res.send(`ID: ${req.params.menuId} does not exist in the database and therefore cannot be deleted.`)
     } 
 };
+
+
+
+//get menus by category
+exports.menuCategory = async (req, res, next) => {
+    const categoryBatch = await Menu.find({ category: req.params.category }).catch(err => next(err));
+    if(categoryBatch.length) {
+        res.json(categoryBatch);
+    } else {
+        res.send(`The category '${req.params.category}' does not contain any delicious carbs to buy`)
+    }
+}
